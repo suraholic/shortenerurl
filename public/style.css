@@ -12,3 +12,8 @@ body {
   font-size: 14px;
 }
 
+table { border-collapse:collapse; }
+table, tr, td { 
+  padding: 10px 10px 10px 10px;
+  border: 1px solid silver
+}

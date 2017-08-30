@@ -8,6 +8,22 @@
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-wellcom node project
+   <h1> URL Shortener</h1>
+
+   <table>
+  <thead>
+    <tr> 
+      <td> Long URL </td>
+      <td> Short URL </td>
+    </tr>
+  </thead>
+  <tbody>
+  <% data.forEach(item => { %>
+    <tr>
+      <td> <%=item.longUrl%></td>
+      <td> <a href="/<%=item.id%>" target="_blank"><%=item.id%></td>
+    </tr>
+  <% }) %>
+  </table>
 </body>
 </html>
