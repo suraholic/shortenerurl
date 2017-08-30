@@ -25,6 +25,24 @@ app.get('/', authMiddleware, (req,res)=>{
   res.render('index.ejs', {data});
 })
 
+app.post('/', authMiddleware, bodyParserMiddleware, (req, res)=> {
+  const longUrl = req.body.longURL
+  let id 
+
+  while(true){
+    const newid = randomstring.generate(6)
+    const chkid = data.find(item=> item.id===newid)
+    if(!chkid){
+      id = newid
+      break
+    }
+  }
+
+  data.push({longUrl, id})
+  res.redirect('/')
+  
+})
+
 app.get('/:id', (req, res) => {
   const id = req.params.id
   const matched = data.find(item=> item.id === id)
