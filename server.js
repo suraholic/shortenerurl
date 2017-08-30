@@ -25,6 +25,18 @@ app.get('/', authMiddleware, (req,res)=>{
   res.render('index.ejs', {data});
 })
 
+app.get('/:id', (req, res) => {
+  const id = req.params.id
+  const matched = data.find(item=> item.id === id)
+  if(matched){
+    res.redirect(301, matched.longUrl)
+  } else {
+    res.status(404)
+    res.send('404 Not Found')
+  }
+
+})
+
 app.listen(3000, ()=>{
   console.log('server start...')
 })
